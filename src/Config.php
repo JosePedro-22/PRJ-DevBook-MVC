@@ -2,13 +2,13 @@
 namespace src;
 
 class Config {
-    const BASE_DIR = '/mvc/public';
+    const BASE_DIR = '/DevBook/public';
 
-    const DB_DRIVER = 'mysql';
+    const DB_DRIVER = 'pgsql';
     const DB_HOST = 'localhost';
-    const DB_DATABASE = 'test';
-    CONST DB_USER = 'root';
-    const DB_PASS = '';
+    const DB_DATABASE = 'devsBook';
+    CONST DB_USER = 'postgres';
+    const DB_PASS = 'admin123';
 
     const ERROR_CONTROLLER = 'ErrorController';
     const DEFAULT_ACTION = 'index';
