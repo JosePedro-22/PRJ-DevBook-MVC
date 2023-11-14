@@ -2,7 +2,7 @@
 namespace src\controllers;
 
 use \core\Controller;
-use src\halper\LoginHalper;
+use src\halpers\LoginHalper;
 
 class HomeController extends Controller {
 
@@ -10,13 +10,16 @@ class HomeController extends Controller {
 
     public function __construct()
     {
-        $this->loggerUser = LoginHalper::checkLogin();
+        $this->loggerUser = new LoginHalper();
+        $this->loggerUser->checkLogin();
+        
         if($this->loggerUser === null)
             $this->redirect('/login');
     }
 
     public function index() {
-        $this->render('home', ['nome' => 'Bonieky']);
+        $this->render('home', ['nome' => 'Jose Pedro']);
+        // $this->render('login');
     }
 
     public function sobre() {

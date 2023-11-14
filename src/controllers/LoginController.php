@@ -6,8 +6,8 @@ use \core\Controller;
 class LoginController extends Controller {
 
    public function login(){
-    echo 'login'; 
-   }
+        $this->render('login');
+    }
 
    public function cadastro(){}
 }

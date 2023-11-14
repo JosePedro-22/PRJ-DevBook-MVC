@@ -2,7 +2,7 @@
 namespace src;
 
 class Config {
-    const BASE_DIR = '/DevBook/public';
+    const BASE_DIR = '/public';
 
     const DB_DRIVER = 'pgsql';
     const DB_HOST = 'localhost';

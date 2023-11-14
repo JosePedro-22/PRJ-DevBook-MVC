@@ -1,5 +1,5 @@
 <?php
-namespace src\halper;
+namespace src\halpers;
 use \src\models\User;
 
 class LoginHalper{
@@ -13,7 +13,7 @@ class LoginHalper{
                 $loggerUser = new User();
                 $loggerUser->id = $data['id'];
                 $loggerUser->email = $data['email'];
-                $loggerUser->setName($data['name']);
+                $loggerUser->name = $data['name'];
 
                 return $loggerUser;
             }
