@@ -2,12 +2,44 @@
 namespace src\controllers;
 
 use \core\Controller;
+use \src\halpers\LoginHalper;
 
 class LoginController extends Controller {
 
    public function login(){
-        $this->render('login');
-    }
+      $flash = '';
+      if(!empty($_SESSION['flash'])){
+         $flash = $_SESSION['flash'];
+         $_SESSION['flash'] = '';
+      }
+      $this->render('login', [
+         'flash' => $flash,
+      ]);
+   }
 
-   public function cadastro(){}
+   public function loginAction()
+   {
+      $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+      $password = filter_input(INPUT_POST,'password');
+
+      if($email && $password){
+         $token = LoginHalper::verifyLogin($email, $password);
+
+         if($token){
+            $_SESSION['token'] = $token;
+            $this->redirect('/');
+         }else {
+            $_SESSION['flash'] = 'Email ou Senha invalidas';    
+         }
+      }else {
+         $_SESSION['flash'] = 'Digite os campos de e-mail e/o senha.';
+         $this->redirect('/login');
+      }
+
+      // echo 'login - recebido';
+   }
+
+   public function cadastro(){
+      echo 'nada';
+   }
 }
